@@ -23,6 +23,10 @@ public class WDate {
         calendar.setTime(date);
     }
 
+    public WDate(long milliseconds) {
+        this(new Date(milliseconds));
+    }
+
     public WDate setDate(Date date) {
         calendar.setTime(date);
         return this;
