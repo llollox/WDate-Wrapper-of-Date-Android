@@ -12,7 +12,7 @@ providing some useful methods without using the `Calendar` object.
 
 ```groovy
 dependencies {
-  compile 'com.llollox.androidprojects:wdate:1.0.1'
+  compile 'com.llollox.androidprojects:wdate:1.0.2'
 }
 ```
 
@@ -51,16 +51,6 @@ The first thing to do is set the date for our
     boolean isTomorrow()
 
     boolean isYesterday()
-
-    /**
-     *
-     * @param date The date used for the comparison
-     * @return if the wdate's date and the one passed as argument
-     * have the same day, month and year.
-     *
-     */
-
-    boolean isSameDay(Date date)
 ```
 
 
@@ -68,96 +58,34 @@ The first thing to do is set the date for our
 
 ##### Comparators
 
-    /**
-     *
-     * @param date The date used for the comparison
-     * @return the number of days between
-     * this wdate object's date and the one passed
-     * as argument.
-     *
-     * The value returned is an absolute value, therefore
-     * even if the date to be compared is in the past
-     * the value returned is always positive.
-     *
-     * The wdate object's date is included, the
-     * compared one not.
-     *
-     */
-    public int getNumDaysBetween(Date date) {
-        return Math.abs((int) TimeUnit.DAYS.convert(getDifference(date), TimeUnit.MILLISECONDS));
-    }
+```java
+  // Returns the number of days (absolute value) between the dates.
+  // The wdate's date is included, the other one not.
+  int getNumDaysBetween(Date date)
 
-    /**
-     *
-     * @param date The date used for the comparison
-     * @return the number of months between
-     * this wdate object's date and the one passed
-     * as argument.
-     *
-     * The value returned is an absolute value, therefore
-     * even if the date to be compared is in the past
-     * the value returned is always positive.
-     *
-     * The wdate object's date is included, the
-     * compared one not.
-     *
-     */
-    public int getNumMonthsBetween(Date date) {
-        return getNumYearsBetween(date) * 12 + Math.abs(getMonth() - new WDate(date).getMonth());
-    }
+  // Returns the number of months (absolute value) between the dates.
+  // The wdate's date is included, the other one not.
+  int getNumMonthsBetween(Date date)
 
-    /**
-     *
-     * @param date The date used for the comparison
-     * @return the number of years between
-     * this wdate object's date and the one passed
-     * as argument.
-     *
-     * The value returned is an absolute value, therefore
-     * even if the date to be compared is in the past
-     * the value returned is always positive.
-     *
-     * The wdate object's date is included, the
-     * compared one not.
-     *
-     */
+  // Returns the number of years (absolute value) between the dates.
+  // The wdate's date is included, the other one not.
+  int getNumYearsBetween(Date date)
 
-    public int getNumYearsBetween(Date date) {
-        return Math.abs(getYear() - new WDate(date).getYear());
-    }
+  // Returns the number of milliseconds (absolute value) between the dates.
+  long getMilliSecondsDifference(Date date)
 
-    /**
-     *
-     * @param date The date used for the comparison
-     * @return the number milliseconds between
-     * this wdate object's date and the one passed
-     * as argument.
-     *
-     */
+  // Checks if the wdate's date is contained in the period.
+  // Both start and end date limits are excluded.
+  boolean isInRange (Date start, Date end)
 
-    public long getDifference(Date date) {
-        return calendar.getTime().getTime() - date.getTime();
-    }
-
-
-    /**
-     *
-     * @param start The start date of the range
-     * @param end The end date of the range
-     * @return if the wdate object's date is strictly contained
-     * in the period between the start and end dates.
-     * Therefore both start and end limits are excluded!
-     *
-     */
-
-    public boolean isInRange(Date start, Date end) {
-        return start.before(calendar.getTime()) && end.after(calendar.getTime());
-    }
-
+  // Checks if both dates have same day, month and year.
+  boolean isSameDay(Date date)
+```
 
 ##### Converters
 
 ```java
+    // Returns the date setting its time to 00:00:00.000
     Date getWithoutTime()
 ```
 
@@ -166,38 +94,89 @@ The first thing to do is set the date for our
 
 ```java
 
-  // Get the day number in the month
-  String format (String sdfPattern)
+ // Format string following the Simple Date Format pattern.
+ String format (String sdfPattern)
 
 ```
 
 
-##### Getters of date
+### Getters
+
+##### Date
 
 ```java
+  int getDay () // Day number in the month
 
-  // Get the day number in the month
-  int getDay ()
+  int getMonth () // Months start from 0
 
-  // Get the month number, starting from 0
-  int getMonth ()
-
-  // Get the year number
   int getYear ()
 ```
 
-##### Getters of time
+### Time
 
 ```java
 
-  // Get the day number in the month
-  int getHour ()
+  int getHours () // 24h format
 
-  // Get the month number, starting from 0
-  int getMinute ()
+  int getMinutes ()
 
-  // Get the year number
-  int getSecond ()
+  int getSeconds ()
 
-  int getMillisecond ()
+  int getMilliSeconds ()
+```
+
+
+
+### Modifiers
+All modifiers supports method chaining.
+
+##### Date
+
+```java
+  WDate addDays (int numDays)
+
+  WDate addMonths (int numMonths)
+
+  WDate addYears (int numYears)
+```
+
+### Time
+
+```java
+
+  WDate addHours (int numHours)
+
+  WDate addMinutes (int numMinutes)
+
+  WDate addSeconds (int numSeconds)
+
+  WDate addMilliSeconds (int numMilliSeconds)
+```
+
+
+
+
+### Setters
+All setters supports method chaining.
+
+##### Date
+
+```java
+  WDate setDay (int days)
+
+  WDate setMonth (int months)
+
+  WDate setYear (int years)
+```
+
+### Time
+
+```java
+  WDate setHours (int hours)
+
+  WDate setMinutes (int minutes)
+
+  WDate setSeconds (int seconds)
+
+  WDate setMilliSeconds (int milliSeconds)
 ```

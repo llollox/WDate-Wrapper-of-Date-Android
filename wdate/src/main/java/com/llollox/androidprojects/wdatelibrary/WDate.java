@@ -59,7 +59,7 @@ public class WDate {
      *
      */
     public int getNumDaysBetween(Date date) {
-        return Math.abs((int) TimeUnit.DAYS.convert(getDifference(date), TimeUnit.MILLISECONDS));
+        return Math.abs((int) TimeUnit.DAYS.convert(getMilliSecondsDifference(date), TimeUnit.MILLISECONDS));
     }
 
     /**
@@ -110,8 +110,8 @@ public class WDate {
      *
      */
 
-    public long getDifference(Date date) {
-        return calendar.getTime().getTime() - date.getTime();
+    public long getMilliSecondsDifference(Date date) {
+        return Math.abs(calendar.getTime().getTime() - date.getTime());
     }
 
 
@@ -206,6 +206,35 @@ public class WDate {
 
 
     // **********************************************
+    // DATE MODIFIERS
+    // **********************************************
+
+
+    public WDate addDays (int numDays) {
+        calendar.add(Calendar.DAY_OF_MONTH, numDays);
+        return this;
+    }
+
+    public WDate addMonths (int numMonths) {
+        calendar.add(Calendar.MONTH, numMonths);
+        return this;
+    }
+
+    public WDate addYears (int numYears) {
+        calendar.add(Calendar.YEAR, numYears);
+        return this;
+    }
+
+
+
+
+
+
+
+
+
+
+    // **********************************************
     // DATE GETTERS
     // **********************************************
 
@@ -220,6 +249,40 @@ public class WDate {
 
     public int getYear () {
         return calendar.get(Calendar.YEAR);
+    }
+
+
+
+
+
+
+
+
+
+    // **********************************************
+    // DATE SETTERS
+    // **********************************************
+
+
+    public WDate setDay (int day) {
+        if (inRangeLimitsIncluded(1, 31, day)) {
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+        }
+        return this;
+    }
+
+    public WDate setMonth (int month) {
+        if (inRangeLimitsIncluded(0, 11, month)) {
+            calendar.set(Calendar.MONTH, month);
+        }
+        return this;
+    }
+
+    public WDate setYear (int year) {
+        if (year > 0) {
+            calendar.set(Calendar.YEAR, year);
+        }
+        return this;
     }
 
 
@@ -257,23 +320,109 @@ public class WDate {
     // TIME GETTERS
     // **********************************************
 
-    public int getHour() {
+    public int getHours() {
         return calendar.get(Calendar.HOUR_OF_DAY);
     }
 
-    public int getMillisecond() {
+    public int getMilliSeconds() {
         return calendar.get(Calendar.MILLISECOND);
     }
 
-    public int getMinute() {
+    public int getMinutes() {
         return calendar.get(Calendar.MINUTE);
     }
 
-    public int getSecond() {
+    public int getSeconds() {
         return calendar.get(Calendar.SECOND);
     }
 
+    public long getMilliSecondsFromEpoch() {
+        return calendar.getTime().getTime();
+    }
 
+
+
+
+
+
+    // **********************************************
+    // TIME MODIFIERS
+    // **********************************************
+
+
+    public WDate addHours (int numHours) {
+        calendar.add(Calendar.HOUR_OF_DAY, numHours);
+        return this;
+    }
+
+    public WDate addMinutes (int numMinutes) {
+        calendar.add(Calendar.MINUTE, numMinutes);
+        return this;
+    }
+
+    public WDate addSeconds (int numSeconds) {
+        calendar.add(Calendar.SECOND, numSeconds);
+        return this;
+    }
+
+    public WDate addMilliSeconds (int numMilliSeconds) {
+        calendar.add(Calendar.MILLISECOND, numMilliSeconds);
+        return this;
+    }
+
+
+
+
+
+
+
+
+    // **********************************************
+    // TIME SETTERS
+    // **********************************************
+
+    public WDate setHours(int hours) {
+        if (inRangeLimitsIncluded(0, 23, hours)) {
+            calendar.set(Calendar.HOUR_OF_DAY, hours);
+        }
+        return this;
+    }
+
+    public WDate setMilliSeconds(int milliSeconds) {
+        if (inRangeLimitsIncluded(0, 999, milliSeconds)) {
+            calendar.set(Calendar.MILLISECOND, milliSeconds);
+        }
+        return this;
+    }
+
+    public WDate setMinutes(int minutes) {
+        if (inRangeLimitsIncluded(0, 59, minutes)) {
+            calendar.set(Calendar.MINUTE, minutes);
+        }
+        return this;
+    }
+
+    public WDate setSeconds(int seconds) {
+        if (inRangeLimitsIncluded(0, 59, seconds)) {
+            calendar.set(Calendar.SECOND, seconds);
+        }
+        return this;
+    }
+
+
+
+
+
+
+
+    // **********************************************
+    // PRIVATE METHODS
+    // **********************************************
+
+
+    private boolean inRangeLimitsIncluded(int min, int max, int value) {
+        return value >= min && value <= max;
+    }
 
 
 }
