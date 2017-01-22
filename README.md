@@ -32,25 +32,25 @@ The first thing to do is set the date for our
 `WDate` object. This can be done in the following manner:
 
 ```java
-  // Set its date as now
-  WDate wdate = new WDate();
+// Set its date as now
+WDate wdate = new WDate();
 
-  // Set as its date the one passed as argument
-  WDate wdate = new WDate(yourDate);
+// Set as its date the one passed as argument
+WDate wdate = new WDate(yourDate);
 
-  // Set as its date the one passed as argument
-  wDate.setDate(yourDate);
+// Set as its date the one passed as argument
+wDate.setDate(yourDate);
 ```
 
 
 ##### Checkers
 
 ```java
-    boolean isToday()
+boolean isToday()
 
-    boolean isTomorrow()
+boolean isTomorrow()
 
-    boolean isYesterday()
+boolean isYesterday()
 ```
 
 
@@ -59,44 +59,42 @@ The first thing to do is set the date for our
 ##### Comparators
 
 ```java
-  // Returns the number of days (absolute value) between the dates.
-  // The wdate's date is included, the other one not.
-  int getNumDaysBetween(Date date)
+// Returns the number of days (absolute value) between the dates.
+// The wdate's date is included, the other one not.
+int getNumDaysBetween(Date date)
 
-  // Returns the number of months (absolute value) between the dates.
-  // The wdate's date is included, the other one not.
-  int getNumMonthsBetween(Date date)
+// Returns the number of months (absolute value) between the dates.
+// The wdate's date is included, the other one not.
+int getNumMonthsBetween(Date date)
 
-  // Returns the number of years (absolute value) between the dates.
-  // The wdate's date is included, the other one not.
-  int getNumYearsBetween(Date date)
+// Returns the number of years (absolute value) between the dates.
+// The wdate's date is included, the other one not.
+int getNumYearsBetween(Date date)
 
-  // Returns the number of milliseconds (absolute value) between the dates.
-  long getMilliSecondsDifference(Date date)
+// Returns the number of milliseconds (absolute value) between the dates.
+long getMilliSecondsDifference(Date date)
 
-  // Checks if the wdate's date is contained in the period.
-  // Both start and end date limits are excluded.
-  boolean isInRange (Date start, Date end)
+// Checks if the wdate's date is contained in the period.
+// Both start and end date limits are excluded.
+boolean isInRange (Date start, Date end)
 
-  // Checks if both dates have same day, month and year.
-  boolean isSameDay(Date date)
+// Checks if both dates have same day, month and year.
+boolean isSameDay(Date date)
 ```
 
 ##### Converters
 
 ```java
-    // Returns the date setting its time to 00:00:00.000
-    Date getWithoutTime()
+// Returns the date setting its time to 00:00:00.000
+Date getWithoutTime()
 ```
 
 
 ##### Formatter
 
 ```java
-
- // Format string following the Simple Date Format pattern.
- String format (String sdfPattern)
-
+// Format string following the Simple Date Format pattern.
+String format (String sdfPattern)
 ```
 
 
@@ -105,24 +103,23 @@ The first thing to do is set the date for our
 ##### Date
 
 ```java
-  int getDay () // Day number in the month
+int getDay () // Day number in the month
 
-  int getMonth () // Months start from 0
+int getMonth () // Months start from 0
 
-  int getYear ()
+int getYear ()
 ```
 
 ### Time
 
 ```java
+int getHours () // 24h format
 
-  int getHours () // 24h format
+int getMinutes ()
 
-  int getMinutes ()
+int getSeconds ()
 
-  int getSeconds ()
-
-  int getMilliSeconds ()
+int getMilliSeconds ()
 ```
 
 
@@ -133,24 +130,23 @@ All modifiers supports method chaining.
 ##### Date
 
 ```java
-  WDate addDays (int numDays)
+WDate addDays (int numDays)
 
-  WDate addMonths (int numMonths)
+WDate addMonths (int numMonths)
 
-  WDate addYears (int numYears)
+WDate addYears (int numYears)
 ```
 
 ### Time
 
 ```java
+WDate addHours (int numHours)
 
-  WDate addHours (int numHours)
+WDate addMinutes (int numMinutes)
 
-  WDate addMinutes (int numMinutes)
+WDate addSeconds (int numSeconds)
 
-  WDate addSeconds (int numSeconds)
-
-  WDate addMilliSeconds (int numMilliSeconds)
+WDate addMilliSeconds (int numMilliSeconds)
 ```
 
 
@@ -162,21 +158,21 @@ All setters supports method chaining.
 ##### Date
 
 ```java
-  WDate setDay (int days)
+WDate setDay (int days)
 
-  WDate setMonth (int months)
+WDate setMonth (int months)
 
-  WDate setYear (int years)
+WDate setYear (int years)
 ```
 
 ### Time
 
 ```java
-  WDate setHours (int hours)
+WDate setHours (int hours)
 
-  WDate setMinutes (int minutes)
+WDate setMinutes (int minutes)
 
-  WDate setSeconds (int seconds)
+WDate setSeconds (int seconds)
 
-  WDate setMilliSeconds (int milliSeconds)
+WDate setMilliSeconds (int milliSeconds)
 ```
