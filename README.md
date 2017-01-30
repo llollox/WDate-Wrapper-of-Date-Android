@@ -4,6 +4,7 @@ This is an utility class that wraps the standard `Date` class
 providing some useful methods without using the `Calendar` object.
 
 ![Alt text](https://img.shields.io/badge/license-MIT-green.svg?style=flat)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-WDate%20--%20Wrapper%20of%20Date-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5136)
 
 
 ## Getting Started
