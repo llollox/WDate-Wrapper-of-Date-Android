@@ -11,7 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 public class WDate {
 
+    public enum WeekStart {
+        SUNDAY, MONDAY
+    }
+
     private Calendar calendar;
+    private WeekStart weekStart = WeekStart.MONDAY;
 
 
     public WDate() {
@@ -32,6 +37,14 @@ public class WDate {
         return this;
     }
 
+    public Date getDate() {
+        return calendar.getTime();
+    }
+
+    public WDate setWeekStart (WeekStart weekStart) {
+        this.weekStart = weekStart;
+        return this;
+    }
 
 
 
@@ -259,6 +272,7 @@ public class WDate {
 
 
 
+
     // **********************************************
     // DATE SETTERS
     // **********************************************
@@ -308,6 +322,66 @@ public class WDate {
     }
 
 
+
+
+
+
+    // **********************************************
+    // PERIOD GETTERS
+    // **********************************************
+
+
+
+    public Date getFirstDayOfWeek() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(calendar.getTime());
+        cal.set(Calendar.DAY_OF_WEEK, 1);
+        if (weekStart == WeekStart.MONDAY)
+            cal.add(Calendar.DATE, 1);
+
+        return cal.getTime();
+    }
+
+    public Date getLastDayOfWeek() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(calendar.getTime());
+        cal.set(Calendar.DAY_OF_WEEK, 7);
+
+        if (weekStart == WeekStart.MONDAY)
+            cal.add(Calendar.DATE, 1);
+
+        return cal.getTime();
+    }
+
+    public Date getFirstDayOfMonth() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(calendar.getTime());
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        return cal.getTime();
+    }
+
+    public Date getLastDayOfMonth() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getFirstDayOfMonth());
+        cal.add(Calendar.MONTH, 1);
+        cal.add(Calendar.DATE, -1);
+        return cal.getTime();
+    }
+
+    public Date getFirstDayOfYear() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(calendar.getTime());
+        cal.set(Calendar.DAY_OF_YEAR, 1);
+        return cal.getTime();
+    }
+
+    public Date getLastDayOfYear() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getFirstDayOfYear());
+        cal.add(Calendar.YEAR, 1);
+        cal.add(Calendar.DATE, -1);
+        return cal.getTime();
+    }
 
 
 
