@@ -13,7 +13,7 @@ providing some useful methods without using the `Calendar` object.
 
 ```groovy
 dependencies {
-  compile 'com.llollox.androidprojects:wdate:1.0.3'
+  compile 'com.llollox.androidprojects:wdate:1.0.4'
 }
 ```
 
@@ -41,6 +41,12 @@ WDate wdate = new WDate(yourDate);
 
 // Set as its date the one passed as argument
 wDate.setDate(yourDate);
+
+// By default the week starts on Monday,
+// but it is possible to customize it
+// configuring the wdate object setting it
+// with WeekStart.SUNDAY
+wDate.setWeekStart(WeekStart weekStart);
 ```
 
 
@@ -111,7 +117,7 @@ int getMonth () // Months start from 0
 int getYear ()
 ```
 
-### Time
+##### Time
 
 ```java
 int getHours () // 24h format
@@ -121,6 +127,22 @@ int getMinutes ()
 int getSeconds ()
 
 int getMilliSeconds ()
+```
+
+##### Period
+
+```java
+Date getFirstDayOfWeek ()
+
+Date getLastDayOfWeek ()
+
+Date getFirstDayOfMonth ()
+
+Date getLastDayOfMonth ()
+
+Date getFirstDayOfYear ()
+
+Date getLastDayOfYear ()
 ```
 
 
@@ -138,7 +160,7 @@ WDate addMonths (int numMonths)
 WDate addYears (int numYears)
 ```
 
-### Time
+##### Time
 
 ```java
 WDate addHours (int numHours)
@@ -149,7 +171,6 @@ WDate addSeconds (int numSeconds)
 
 WDate addMilliSeconds (int numMilliSeconds)
 ```
-
 
 
 
@@ -166,7 +187,7 @@ WDate setMonth (int months)
 WDate setYear (int years)
 ```
 
-### Time
+##### Time
 
 ```java
 WDate setHours (int hours)
