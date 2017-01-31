@@ -29,7 +29,7 @@ dependencies {
 </dependency>
 ```
 
-## Usage
+## Getting Started
 
 The first thing to do is set the date for our
 `WDate` object. This can be done in the following manner:
@@ -52,6 +52,7 @@ wDate.setWeekStart(WeekStart weekStart);
 ```
 
 
+## Usage
 
 ##### Checkers
 
