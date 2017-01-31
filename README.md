@@ -24,7 +24,7 @@ dependencies {
 <dependency>
   <groupId>com.llollox.androidprojects</groupId>
   <artifactId>wdate</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <type>pom</type>
 </dependency>
 ```
@@ -40,16 +40,17 @@ WDate wdate = new WDate();
 
 // Set as its date the one passed as argument
 WDate wdate = new WDate(yourDate);
+```
 
-// Set as its date the one passed as argument
-wDate.setDate(yourDate);
-
+## Configuration
+```java
 // By default the week starts on Monday,
 // but it is possible to customize it
 // configuring the wdate object setting it
 // with WeekStart.SUNDAY
 wDate.setWeekStart(WeekStart weekStart);
 ```
+
 
 
 ##### Checkers
