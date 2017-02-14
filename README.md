@@ -62,6 +62,8 @@ boolean isToday()
 boolean isTomorrow()
 
 boolean isYesterday()
+
+boolean isFuture()
 ```
 
 
@@ -106,6 +108,8 @@ Date getWithoutTime()
 ```java
 // Format string following the Simple Date Format pattern.
 String format (String sdfPattern)
+
+String format (String sdfPattern, Locale locale)
 ```
 
 
@@ -177,6 +181,13 @@ WDate addMilliSeconds (int numMilliSeconds)
 ```
 
 
+### Random
+
+```java
+Date getSample ()
+
+Date getSample (Date date, int numDaysBefore, int numDaysAfter)
+```
 
 ### Setters
 All setters supports method chaining.

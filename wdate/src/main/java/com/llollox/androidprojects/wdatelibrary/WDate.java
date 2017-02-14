@@ -1,8 +1,11 @@
 package com.llollox.androidprojects.wdatelibrary;
 
+import android.text.format.DateUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -197,6 +200,10 @@ public class WDate {
         return isSameDay(yesterdayCalendar.getTime());
     }
 
+    public boolean isFuture() {
+        return calendar.getTime().getTime() > new Date().getTime();
+    }
+
     /**
      *
      * @param date The date used for the comparison
@@ -321,6 +328,22 @@ public class WDate {
         return new SimpleDateFormat(sdfPattern).format(calendar.getTime());
     }
 
+    public String format (String sdfPattern, Locale locale) {
+        return new SimpleDateFormat(sdfPattern, locale).format(calendar.getTime());
+    }
+
+    public String getRelativeTimeSpan () {
+        return getRelativeTimeSpan(new Date());
+    }
+
+    public String getRelativeTimeSpan (Date dueDate) {
+        return (String) DateUtils.getRelativeTimeSpanString(
+                getDate().getTime(),
+                dueDate.getTime(),
+                0L,
+                DateUtils.FORMAT_ABBREV_ALL);
+    }
+
 
 
 
@@ -336,8 +359,9 @@ public class WDate {
         Calendar cal = Calendar.getInstance();
         cal.setTime(calendar.getTime());
         cal.set(Calendar.DAY_OF_WEEK, 1);
-        if (weekStart == WeekStart.MONDAY)
+        if (weekStart == WeekStart.MONDAY) {
             cal.add(Calendar.DATE, 1);
+        }
 
         return cal.getTime();
     }
@@ -347,8 +371,9 @@ public class WDate {
         cal.setTime(calendar.getTime());
         cal.set(Calendar.DAY_OF_WEEK, 7);
 
-        if (weekStart == WeekStart.MONDAY)
+        if (weekStart == WeekStart.MONDAY) {
             cal.add(Calendar.DATE, 1);
+        }
 
         return cal.getTime();
     }
@@ -384,6 +409,28 @@ public class WDate {
     }
 
 
+
+
+
+
+    // **********************************************
+    // RANDOM
+    // **********************************************
+
+    public Date getSample() {
+        int diffDays = ((int)(Math.random() * 10000)) - 5000;
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, diffDays);
+        return cal.getTime();
+    }
+
+    public Date getSample(Date date, int numDaysBefore, int numDaysAfter) {
+        int diffDays = ((int)(Math.random() * numDaysAfter + numDaysBefore)) - numDaysBefore;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, diffDays);
+        return cal.getTime();
+    }
 
 
 
