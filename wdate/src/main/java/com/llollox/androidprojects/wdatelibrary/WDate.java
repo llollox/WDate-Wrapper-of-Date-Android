@@ -180,6 +180,34 @@ public class WDate {
     // DAYS CHECKS
     // **********************************************
 
+    public boolean isMonday() {
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
+    }
+
+    public boolean isThursday() {
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY;
+    }
+
+    public boolean isWednesday() {
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY;
+    }
+
+    public boolean isTuesday() {
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY;
+    }
+
+    public boolean isFriday() {
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY;
+    }
+
+    public boolean isSaturday() {
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY;
+    }
+
+    public boolean isSunday() {
+        return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
+    }
+
 
     public boolean isToday() {
         return isSameDay(new Date());

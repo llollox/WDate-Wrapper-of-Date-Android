@@ -40,6 +40,9 @@ WDate wdate = new WDate();
 
 // Set as its date the one passed as argument
 WDate wdate = new WDate(yourDate);
+
+// Get the Date object
+Date date = wDate.getDate();
 ```
 
 ## Configuration
@@ -62,6 +65,22 @@ boolean isToday()
 boolean isTomorrow()
 
 boolean isYesterday()
+
+// Week
+
+boolean isMonday();
+
+boolean isThursday();
+
+boolean isWednesday();
+
+boolean isTuesday();
+
+boolean isFriday();
+
+boolean isSaturday();
+
+boolean isSunday();
 ```
 
 
