@@ -531,23 +531,23 @@ public class WDate {
     // STATIC METHODS
     // **********************************************
 
-    public WDate dayAfterTomorrow() {
+    public static WDate dayAfterTomorrow() {
         return new WDate().addDays(2).withoutTime();
     }
 
-    public WDate dayBeforeYesterday() {
+    public static WDate dayBeforeYesterday() {
         return new WDate().addDays(-2).withoutTime();
     }
 
-    public WDate today() {
+    public static WDate today() {
         return new WDate().withoutTime();
     }
 
-    public WDate tomorrow() {
+    public static WDate tomorrow() {
         return new WDate().addDays(1).withoutTime();
     }
 
-    public WDate yesterday() {
+    public static WDate yesterday() {
         return new WDate().addDays(-1).withoutTime();
     }
 

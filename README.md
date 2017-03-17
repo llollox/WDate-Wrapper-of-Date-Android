@@ -15,7 +15,7 @@ providing some useful methods without using the `Calendar` object.
 
 ```groovy
 dependencies {
-  compile 'com.llollox.androidprojects:wdate:1.0.6'
+  compile 'com.llollox.androidprojects:wdate:1.1.0'
 }
 ```
 
