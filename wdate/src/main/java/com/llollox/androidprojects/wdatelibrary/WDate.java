@@ -153,20 +153,12 @@ public class WDate {
     // CONVERTERS
     // **********************************************
 
-    /**
-     *
-     * @return the date setting its time to 00:00:00.000
-     *
-     */
-
-    public Date getWithoutTime () {
-        Calendar dateCalendar = Calendar.getInstance();
-        dateCalendar.setTime(calendar.getTime());
-        dateCalendar.set(Calendar.HOUR_OF_DAY, 0);
-        dateCalendar.set(Calendar.MINUTE, 0);
-        dateCalendar.set(Calendar.SECOND, 0);
-        dateCalendar.set(Calendar.MILLISECOND, 0);
-        return dateCalendar.getTime();
+    public WDate withoutTime () {
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return this;
     }
 
 
@@ -179,6 +171,8 @@ public class WDate {
     // **********************************************
     // DAYS CHECKS
     // **********************************************
+
+    // Week
 
     public boolean isMonday() {
         return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
@@ -208,6 +202,7 @@ public class WDate {
         return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
     }
 
+    // Dates
 
     public boolean isToday() {
         return isSameDay(new Date());
@@ -225,6 +220,24 @@ public class WDate {
         return isSameDay(yesterdayCalendar.getTime());
     }
 
+
+
+    public boolean isAfter(Date date) {
+        return getDate().after(date);
+    }
+
+    public boolean isAfter(WDate wDate) {
+        return isAfter(wDate.getDate());
+    }
+
+    public boolean isBefore(Date date) {
+        return getDate().before(date);
+    }
+
+    public boolean isBefore(WDate wDate) {
+        return isBefore(wDate.getDate());
+    }
+
     /**
      *
      * @param date The date used for the comparison
@@ -233,7 +246,7 @@ public class WDate {
      *
      */
 
-    private boolean isSameDay(Date date) {
+    public boolean isSameDay(Date date) {
         WDate wDate = new WDate(date);
         return getDay() == wDate.getDay()
                 && getMonth() == wDate.getMonth()
@@ -513,6 +526,30 @@ public class WDate {
 
 
 
+
+    // **********************************************
+    // STATIC METHODS
+    // **********************************************
+
+    public WDate dayAfterTomorrow() {
+        return new WDate().addDays(2).withoutTime();
+    }
+
+    public WDate dayBeforeYesterday() {
+        return new WDate().addDays(-2).withoutTime();
+    }
+
+    public WDate today() {
+        return new WDate().withoutTime();
+    }
+
+    public WDate tomorrow() {
+        return new WDate().addDays(1).withoutTime();
+    }
+
+    public WDate yesterday() {
+        return new WDate().addDays(-1).withoutTime();
+    }
 
 
 

@@ -15,7 +15,7 @@ providing some useful methods without using the `Calendar` object.
 
 ```groovy
 dependencies {
-  compile 'com.llollox.androidprojects:wdate:1.0.4'
+  compile 'com.llollox.androidprojects:wdate:1.0.6'
 }
 ```
 
@@ -115,8 +115,9 @@ boolean isSameDay(Date date)
 ##### Converters
 
 ```java
-// Returns the date setting its time to 00:00:00.000
-Date getWithoutTime()
+
+// Set the time to midnight 00:00:00.000
+WDate withoutTime()
 ```
 
 
@@ -220,4 +221,22 @@ WDate setMinutes (int minutes)
 WDate setSeconds (int seconds)
 
 WDate setMilliSeconds (int milliSeconds)
+```
+
+
+##### Static Methods
+
+The following methods return a `WDate` object
+with the time set at midnight (00:00:00)
+
+```java
+WDate.dayAfterTomorrow()
+
+WDate.dayBeforeYesterday()
+
+WDate.today()
+
+WDate.tomorrow()
+
+WDate.yesterday()
 ```
