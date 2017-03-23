@@ -3,6 +3,7 @@ package com.llollox.androidprojects.wdatelibrary;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -551,7 +552,41 @@ public class WDate {
         return new WDate().addDays(-1).withoutTime();
     }
 
+    public static WDate min(List<Date> dates) {
+        if (dates != null && !dates.isEmpty()) {
+            Date minDate = dates.get(0);
 
+            for (int i=1; i<dates.size();i++) {
+                Date date = dates.get(i);
+                if (date.before(minDate)) {
+                    minDate = date;
+                }
+            }
+
+            return new WDate(minDate);
+        }
+        else {
+            return null;
+        }
+    }
+
+    public static WDate max(List<Date> dates) {
+        if (dates != null && !dates.isEmpty()) {
+            Date maxDate = dates.get(0);
+
+            for (int i=1; i<dates.size();i++) {
+                Date date = dates.get(i);
+                if (date.after(maxDate)) {
+                    maxDate = date;
+                }
+            }
+
+            return new WDate(maxDate);
+        }
+        else {
+            return null;
+        }
+    }
 
 
     // **********************************************

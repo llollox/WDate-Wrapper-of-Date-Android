@@ -15,7 +15,7 @@ providing some useful methods without using the `Calendar` object.
 
 ```groovy
 dependencies {
-  compile 'com.llollox.androidprojects:wdate:1.1.0'
+  compile 'com.llollox.androidprojects:wdate:1.2.0'
 }
 ```
 
@@ -24,7 +24,7 @@ dependencies {
 <dependency>
   <groupId>com.llollox.androidprojects</groupId>
   <artifactId>wdate</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -239,4 +239,8 @@ WDate.today()
 WDate.tomorrow()
 
 WDate.yesterday()
+
+WDate.min(List<Date> dates)
+
+WDate.max(List<Date> dates)
 ```
