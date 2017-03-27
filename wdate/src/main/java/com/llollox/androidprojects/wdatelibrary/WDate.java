@@ -154,7 +154,7 @@ public class WDate {
     // CONVERTERS
     // **********************************************
 
-    public WDate withoutTime () {
+    public WDate atMidNight () {
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
@@ -221,6 +221,14 @@ public class WDate {
         return isSameDay(yesterdayCalendar.getTime());
     }
 
+    // Time
+
+    public boolean isAtMidNight() {
+        return calendar.get(Calendar.HOUR_OF_DAY) == 0
+                && calendar.get(Calendar.MINUTE) == 0
+                && calendar.get(Calendar.SECOND) == 0
+                && calendar.get(Calendar.MILLISECOND) == 0;
+     }
 
 
     public boolean isAfter(Date date) {
@@ -533,23 +541,23 @@ public class WDate {
     // **********************************************
 
     public static WDate dayAfterTomorrow() {
-        return new WDate().addDays(2).withoutTime();
+        return new WDate().addDays(2).atMidNight();
     }
 
     public static WDate dayBeforeYesterday() {
-        return new WDate().addDays(-2).withoutTime();
+        return new WDate().addDays(-2).atMidNight();
     }
 
     public static WDate today() {
-        return new WDate().withoutTime();
+        return new WDate().atMidNight();
     }
 
     public static WDate tomorrow() {
-        return new WDate().addDays(1).withoutTime();
+        return new WDate().addDays(1).atMidNight();
     }
 
     public static WDate yesterday() {
-        return new WDate().addDays(-1).withoutTime();
+        return new WDate().addDays(-1).atMidNight();
     }
 
     public static WDate min(List<Date> dates) {

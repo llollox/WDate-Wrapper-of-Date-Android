@@ -15,7 +15,7 @@ providing some useful methods without using the `Calendar` object.
 
 ```groovy
 dependencies {
-  compile 'com.llollox.androidprojects:wdate:1.2.0'
+  compile 'com.llollox.androidprojects:wdate:1.2.1'
 }
 ```
 
@@ -24,7 +24,7 @@ dependencies {
 <dependency>
   <groupId>com.llollox.androidprojects</groupId>
   <artifactId>wdate</artifactId>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
   <type>pom</type>
 </dependency>
 ```
@@ -81,6 +81,10 @@ boolean isFriday();
 boolean isSaturday();
 
 boolean isSunday();
+
+// Time
+
+boolean isAtMidNight();
 ```
 
 
@@ -117,7 +121,7 @@ boolean isSameDay(Date date)
 ```java
 
 // Set the time to midnight 00:00:00.000
-WDate withoutTime()
+WDate atMidnight()
 ```
 
 
